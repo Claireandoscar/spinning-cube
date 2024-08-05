@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  margin: 0;
+  background-color: #fffdee;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.content-container {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* Space between the cube and logo */
+  perspective: 1000px; /* Add perspective to the parent container */
+}
+
+.cube {
+  width: 100px; /* Original size */
+  height: 100px; /* Original size */
+  position: relative;
+  transform-style: preserve-3d; /* Ensure 3D transform is preserved */
+  transform: rotateX(30deg) rotateY(45deg); /* Slightly above and turned */
+  animation: spin 5s infinite linear; /* Only spin animation */
+}
+
+.face {
+  position: absolute;
+  width: 100px; /* Original size */
+  height: 100px; /* Original size */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.face img {
+  width: 100%;
+  height: 100%;
+}
+
+.front {
+  transform: translateZ(50px); /* Original size */
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(50px); /* Original size */
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(50px); /* Original size */
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(50px); /* Original size */
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(50px); /* Original size */
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(50px); /* Original size */
+}
+
+.logo {
+  height: 150px; /* Increase the height of the logo */
+}
+
+@keyframes spin {
+  0% {
+	transform: rotateX(30deg) rotateY(45deg);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+	transform: rotateX(390deg) rotateY(45deg); /* Rotate up */
+  }
+  100% {
+	transform: rotateX(390deg) rotateY(405deg); /* Rotate over */
   }
 }
